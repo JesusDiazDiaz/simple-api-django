@@ -14,7 +14,10 @@ def movies_list(request):
     Listas todas la noticias, o crea una pelicula
     """
     if request.method == 'GET':
+        # recuperar todas las peliculas
         movies = Movies.objects.all()
+        # serializamos la lista de peliculas
+        # utilizamos le flag many para serializar la lista
         serializer = MoviesSerializer(movies, many=True)
         return Response(serializer.data)
 
